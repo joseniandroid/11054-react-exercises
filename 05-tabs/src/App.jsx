@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Loading from "./Loading";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [jobs, setJobs] = useState([]);
+
+  const url = "https://course-api.com/react-tabs-project";
+
+  const fetchJobs = async () => {
+    const response = await fetch(url);
+    const newJobs = await response.json();
+
+    setJobs(newJobs);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
 
   if (loading) {
     return <Loading />;
@@ -15,7 +30,15 @@ function App() {
         <div className="underline"></div>
       </div>
       <div className="jobs-center">
-        {/* TODO: Loop through all the jobs fetch from the API server */}
+        <div className="btn-container">
+          {jobs.map((j) => {
+            return (
+              <button key={j.id} className="job-btn">
+                {j.company}
+              </button>
+            );
+          })}
+        </div>
       </div>
       <button type="button" className="btn">
         more info
