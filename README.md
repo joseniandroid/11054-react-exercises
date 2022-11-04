@@ -11,3 +11,4 @@
 2. Tours
 3. Reviews
 4. Accordion
+5. Tabs
