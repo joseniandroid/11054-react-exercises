@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import Loading from "./Loading";
+import JobInfo from "./JobInfo";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
+  const [jobIndex, setJobIndex] = useState(0);
 
   const url = "https://course-api.com/react-tabs-project";
 
@@ -39,6 +41,7 @@ function App() {
             );
           })}
         </div>
+        <JobInfo job={jobs[jobIndex]} />
       </div>
       <button type="button" className="btn">
         more info
