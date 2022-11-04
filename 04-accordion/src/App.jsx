@@ -13,7 +13,7 @@ function App() {
         <section className="info">
           {questions.map((q) => {
             return (
-              <SingleQuestion key={q.id} />
+              <SingleQuestion key={q.id} {...q} />
             );
           })}
         </section>
