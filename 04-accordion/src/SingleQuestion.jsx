@@ -1,7 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const SingleQuestion = ({ title, info }) => {
+  const [showInfo, setShowInfo] = useState(false);
+
   return (
     <article className="question">
       <header>
@@ -10,6 +12,7 @@ const SingleQuestion = ({ title, info }) => {
           <AiOutlinePlus />
         </button>
       </header>
+      {showInfo && <p>{info}</p>}
     </article>
   );
 };
