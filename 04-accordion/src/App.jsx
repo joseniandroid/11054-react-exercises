@@ -1,10 +1,24 @@
-import { useState } from 'react'
+import {useState} from 'react';
+import SingleQuestion from './SingleQuestion';
+
+import data from './data';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [questions, setQuestions] = useState(data);
 
   return (
-    <h2>Accordion Project Setup</h2>
+    <main>
+      <div className="container">
+        <h3>questions and answers about login</h3>
+        <section className="info">
+          {questions.map((q) => {
+            return (
+              <SingleQuestion key={q.id} />
+            );
+          })}
+        </section>
+      </div>
+    </main>
   )
 }
 
