@@ -12,3 +12,4 @@
 3. Reviews
 4. Accordion
 5. Tabs
+6. Menu
