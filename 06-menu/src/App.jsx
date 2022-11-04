@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Categories from "./Categories";
+import Menu from "./Menu";
 import items from "./data";
 
 const allCategories = ["all", ...new Set(items.map((item) => item.category))];
@@ -16,7 +17,7 @@ function App() {
           <div className="underline"></div>
         </div>
         <Categories categories={categories} />
-        <div></div>
+       <Menu items={menuItems} />
       </section>
     </main>
   );
