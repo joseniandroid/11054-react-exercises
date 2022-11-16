@@ -5,9 +5,10 @@ import { BasketItem } from '../types';
 type BasketProps = {
   items: BasketItem[];
   editItem: (id: string) => void;
+  removeItem: (id: string) => void;
 };
 
-export const Basket = ({ items, editItem }: BasketProps) => {
+export const Basket = ({ items, editItem, removeItem }: BasketProps) => {
   return (
     <div className='grocery-list'>
       {items.map((item) => (
@@ -21,7 +22,11 @@ export const Basket = ({ items, editItem }: BasketProps) => {
             >
               <FaEdit />
             </button>
-            <button type='button' className='delete-btn'>
+            <button
+              type='button'
+              className='delete-btn'
+              onClick={() => removeItem(item.id)}
+            >
               <FaTrash />
             </button>
           </div>
