@@ -1,4 +1,5 @@
 export type BasketItem = {
+  id: string;
   title: string;
 };
 

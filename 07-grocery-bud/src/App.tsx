@@ -10,14 +10,38 @@ function App() {
     message: '',
     type: 'success',
   });
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState('');
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const newItemName = itemName;
 
+    if (isEditing) {
+      // Update the item inside the basket
+      const updatedBasket = basket.map((item) => {
+        if (item.id === editId) {
+          return { ...item, title: newItemName };
+        }
+        return item;
+      });
+      setBasket(updatedBasket);
+
+      setItemName('');
+      setEditId('');
+      setIsEditing(false);
+      showAlert({
+        show: true,
+        message: `Item changed to '${newItemName}'`,
+        type: 'success',
+      });
+      return;
+    }
+
     setBasket([
       ...basket,
       {
+        id: new Date().getTime().toString(),
         title: newItemName,
       },
     ]);
@@ -46,6 +70,23 @@ function App() {
     }
   };
 
+  const editItem = (id: string) => {
+    const itemToEdit = basket.find((basketItem) => basketItem.id === id);
+
+    if (!itemToEdit) {
+      showAlert({
+        show: true,
+        message: `'${itemToEdit}' not found`,
+        type: 'error',
+      });
+      return;
+    }
+
+    setItemName(itemToEdit.title);
+    setIsEditing(true);
+    setEditId(id);
+  };
+
   return (
     <section className='section-center'>
       <form action='' className='grocery-form' onSubmit={handleSubmit}>
@@ -61,14 +102,14 @@ function App() {
             onChange={(e) => setItemName(e.target.value)}
           />
           <button type='submit' className='submit-btn'>
-            submit
+            {isEditing ? 'edit' : 'submit'}
           </button>
         </div>
       </form>
 
       {basket.length > 0 && (
         <div className='grocery-container'>
-          <Basket items={basket} />
+          <Basket items={basket} editItem={editItem} />
           <button className='clear-btn' onClick={clearBasket}>
             clear items
           </button>
