@@ -184,7 +184,7 @@ Grocery List
   letter-spacing: var(--spacing);
   text-transform: capitalize;
 }
-.alert-danger {
+.alert-error {
   color: #721c24;
   background: #f8d7da;
 }
