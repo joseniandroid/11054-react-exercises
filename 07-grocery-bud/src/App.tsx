@@ -1,10 +1,18 @@
 import { Alert, BasketItem } from './types';
 import { Basket, Toast } from './components';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+
+const getCachedBasket = () => {
+  const basket = localStorage.getItem('basket');
+  if (basket) {
+    return JSON.parse(basket);
+  }
+  return [];
+};
 
 function App() {
   const [itemName, setItemName] = useState('');
-  const [basket, setBasket] = useState<BasketItem[]>([]);
+  const [basket, setBasket] = useState<BasketItem[]>(getCachedBasket());
   const [alert, setAlert] = useState<Alert>({
     show: false,
     message: '',
@@ -12,6 +20,10 @@ function App() {
   });
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basket));
+  }, [basket]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
