@@ -1,11 +1,26 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
+
+import { Basket } from './components';
+import { BasketItem } from './types';
 
 function App() {
-  const [itemName, setItemName] = useState('eggs');
+  const [itemName, setItemName] = useState('');
+  const [basket, setBasket] = useState<BasketItem[]>([]);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    setBasket([
+      ...basket,
+      {
+        title: itemName,
+      },
+    ]);
+  };
 
   return (
     <section className='section-center'>
-      <form action='' className='grocery-form'>
+      <form action='' className='grocery-form' onSubmit={handleSubmit}>
         <h3>grocery bud</h3>
         <div className='form-control'>
           <input
@@ -15,12 +30,17 @@ function App() {
             value={itemName}
             onChange={(e) => setItemName(e.target.value)}
           />
-          <h2>{itemName}</h2>
           <button type='submit' className='submit-btn'>
             submit
           </button>
         </div>
       </form>
+
+      {basket.length > 0 && (
+        <div className='grocery-container'>
+          <Basket items={basket} />
+        </div>
+      )}
     </section>
   );
 }
