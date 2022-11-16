@@ -18,6 +18,10 @@ function App() {
     ]);
   };
 
+  const clearBasket = () => {
+    setBasket([]);
+  };
+
   return (
     <section className='section-center'>
       <form action='' className='grocery-form' onSubmit={handleSubmit}>
@@ -39,6 +43,9 @@ function App() {
       {basket.length > 0 && (
         <div className='grocery-container'>
           <Basket items={basket} />
+          <button className='clear-btn' onClick={clearBasket}>
+            clear items
+          </button>
         </div>
       )}
     </section>
