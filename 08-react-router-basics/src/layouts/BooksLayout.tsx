@@ -10,7 +10,11 @@ export const BooksLayout = () => {
       <Link to='/books/3'>Book 3</Link>
       <Link to='/books/new'>New Book</Link>
 
-      <Outlet />
+      <Outlet
+        context={{
+          hello: 'world',
+        }}
+      />
     </>
   );
 };
