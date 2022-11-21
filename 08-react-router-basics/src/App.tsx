@@ -1,6 +1,7 @@
 import { Book, BookList, Home, NewBook, NotFound } from './pages';
 import { Link, Route, Routes } from 'react-router-dom';
 
+import { BookRoutes } from './routes';
 import { BooksLayout } from './layouts';
 
 function App() {
@@ -19,11 +20,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/books' element={<BooksLayout />}>
-          <Route index element={<BookList />} />
-          <Route path=':id' element={<Book />} />
-          <Route path='new' element={<NewBook />} />
-        </Route>
+        <Route path='/books/*' element={<BookRoutes />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>
