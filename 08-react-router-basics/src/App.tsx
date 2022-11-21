@@ -1,4 +1,4 @@
-import { BookList, Home } from './pages';
+import { Book, BookList, Home } from './pages';
 import { Link, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/books' element={<BookList />} />
+        <Route path='/books/:id' element={<Book />} />
       </Routes>
     </>
   );
