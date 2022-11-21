@@ -1,10 +1,25 @@
 import { Book, BookList, Home, NewBook, NotFound } from './pages';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useRoutes } from 'react-router-dom';
 
 import { BookRoutes } from './routes';
 import { BooksLayout } from './layouts';
 
 function App() {
+  const elements = useRoutes([
+    {
+      path: '/',
+      element: <Home />,
+    },
+    {
+      path: '/books',
+      element: <BookRoutes />,
+    },
+    {
+      path: '*',
+      element: <NotFound />,
+    },
+  ]);
+
   return (
     <>
       <Routes>
@@ -18,11 +33,13 @@ function App() {
         </ul>
       </nav>
 
-      <Routes>
+      {elements}
+
+      {/* <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/books/*' element={<BookRoutes />} />
         <Route path='*' element={<NotFound />} />
-      </Routes>
+      </Routes> */}
     </>
   );
 }
