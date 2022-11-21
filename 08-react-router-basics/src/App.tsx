@@ -1,4 +1,4 @@
-import { Book, BookList, Home } from './pages';
+import { Book, BookList, Home, NewBook, NotFound } from './pages';
 import { Link, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -15,6 +15,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/books' element={<BookList />} />
         <Route path='/books/:id' element={<Book />} />
+        <Route path='/books/new' element={<NewBook />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   );
