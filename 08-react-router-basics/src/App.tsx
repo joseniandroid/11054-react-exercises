@@ -12,7 +12,7 @@ function App() {
 
       <nav>
         <ul>
-          <Link to='/' replace>
+          <Link to='/' reloadDocument>
             Home
           </Link>
           <Link to='/books'>Books</Link>
