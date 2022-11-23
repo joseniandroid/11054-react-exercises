@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom';
+
 export const NotFound = () => {
-  return <h2>NotFound</h2>;
+  return <Navigate to='/' />;
 };
