@@ -1,3 +1,5 @@
+import styles from './Child.module.css';
+
 export const Child1 = () => {
-  return <div>Child1</div>;
+  return <div className={styles.childBox1}></div>;
 };
