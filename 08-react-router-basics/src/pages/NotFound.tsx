@@ -6,7 +6,12 @@ export const NotFound = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate('/');
+      navigate('/', {
+        state: {
+          statusCode: 404,
+          message: 'Page not found',
+        },
+      });
     }, 3000);
   }, []);
 
