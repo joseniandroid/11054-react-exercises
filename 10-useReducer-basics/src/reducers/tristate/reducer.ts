@@ -1,9 +1,19 @@
+import { TriStateAction, TriStateActionType } from './actions';
+
 import { TriState } from './state';
-import { TriStateAction } from './actions';
 
 export const triStateReducer = (
   state: TriState,
   action: TriStateAction
 ): TriState => {
-  return state;
+  switch (action.type) {
+    case TriStateActionType.SetInputText:
+      return {
+        ...state,
+        inputText: action.payload.inputText,
+      };
+
+    default:
+      return state;
+  }
 };

@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { setInputText, triStateReducer } from '../reducers/tristate';
+import { useReducer, useState } from 'react';
 
 export const TriStateReducerDemo = () => {
-  const [inputText, setInputText] = useState('');
-  const [count, setCount] = useState(0);
-  const [isDefaultColor, setIsDefaultColor] = useState(true);
+  const [state, dispatch] = useReducer(triStateReducer, {});
+  const { counter, inputText, isDefaultColor } = state;
 
   return (
     <main style={{ color: isDefaultColor ? 'black' : 'red' }}>
@@ -12,16 +12,16 @@ export const TriStateReducerDemo = () => {
         type='text'
         placeholder='Enter text'
         value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
+        onChange={(e) => dispatch(setInputText(e.target.value))}
       />
-      <h3>{count}</h3>
+      <h3>{counter}</h3>
       <h3>{inputText}</h3>
       <div>
-        <button onClick={() => setCount(count + 1)}>Increment</button>
+        {/* <button onClick={() => setCount(count + 1)}>Increment</button>
         <button onClick={() => setCount(count - 1)}>Decrement</button>
         <button onClick={() => setIsDefaultColor(!isDefaultColor)}>
           Toggle Color
-        </button>
+        </button> */}
       </div>
     </main>
   );

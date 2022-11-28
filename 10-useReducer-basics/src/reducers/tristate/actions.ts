@@ -10,3 +10,8 @@ export type TriStateAction = {
   type: TriStateActionType;
   payload: TriState;
 };
+
+export const setInputText = (inputText: string): TriStateAction => ({
+  type: TriStateActionType.SetInputText,
+  payload: { inputText },
+});
