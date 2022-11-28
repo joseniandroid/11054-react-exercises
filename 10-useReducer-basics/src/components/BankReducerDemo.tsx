@@ -18,6 +18,13 @@ export const BankReducerDemo = () => {
     dispatch(depositAction);
   };
 
+  const handleWithdrawal = (amount: number) => {
+    dispatch({
+      type: BankActionType.Withdraw,
+      payload: amount,
+    });
+  };
+
   const handleSetAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
     const amountValue = parseInt(e.target.value);
     setAmount(amountValue);
@@ -31,7 +38,7 @@ export const BankReducerDemo = () => {
       <div style={{ marginTop: '1em' }}>
         <button onClick={() => handleDeposit(amount)}>Deposit</button>
         <span style={{ marginLeft: '1em' }}></span>
-        <button>Withdraw</button>
+        <button onClick={() => handleWithdrawal(amount)}>Withdraw</button>
       </div>
     </>
   );
