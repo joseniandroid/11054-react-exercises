@@ -2,6 +2,7 @@ import {
   decrement,
   increment,
   setInputText,
+  toggleColor,
   triStateReducer,
 } from '../reducers/tristate';
 import { useReducer, useState } from 'react';
@@ -24,9 +25,7 @@ export const TriStateReducerDemo = () => {
       <div>
         <button onClick={() => dispatch(increment())}>Increment</button>
         <button onClick={() => dispatch(decrement())}>Decrement</button>
-        {/* <button onClick={() => setIsDefaultColor(!isDefaultColor)}>
-          Toggle Color
-        </button> */}
+        <button onClick={() => dispatch(toggleColor())}>Toggle Color</button>
       </div>
     </main>
   );

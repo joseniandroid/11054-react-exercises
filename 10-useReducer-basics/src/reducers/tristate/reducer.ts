@@ -26,6 +26,12 @@ export const triStateReducer = (
         counter: countValue - 1,
       };
 
+    case TriStateActionType.SetIsDefaultColor:
+      return {
+        ...state,
+        isDefaultColor: !state.isDefaultColor,
+      };
+
     default:
       return state;
   }

@@ -26,3 +26,8 @@ export const decrement = (): TriStateAction => ({
   type: TriStateActionType.Decrement,
   payload: {},
 });
+
+export const toggleColor = (): TriStateAction => ({
+  type: TriStateActionType.SetIsDefaultColor,
+  payload: {},
+});
