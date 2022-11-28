@@ -1,11 +1,19 @@
-import { BankAction } from './actions';
+import { BankAction, BankActionType } from './actions';
+
 import { BankState } from './state';
 
 export const bankReducer = (
   state: BankState,
   action: BankAction
 ): BankState => {
-  return {
-    balance: 500,
-  };
+  switch (action.type) {
+    case BankActionType.Deposit:
+      return {
+        ...state,
+        balance: state.balance + action.payload,
+      };
+
+    default:
+      return state;
+  }
 };
