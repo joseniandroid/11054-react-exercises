@@ -22,3 +22,7 @@
 ### useContext
 
 9. Basics
+
+### useReducer
+
+10. Basics
